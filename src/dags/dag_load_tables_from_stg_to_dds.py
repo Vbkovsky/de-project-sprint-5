@@ -1,10 +1,6 @@
 from airflow import DAG
-#from airflow.providers.postgres.operators.postgres import PostgresOperator
-#from airflow.providers.postgres.hooks.postgres import PostgresHook
 from airflow.providers.common.sql.operators.sql import SQLExecuteQueryOperator as PostgresOperator
-#import pandas as pd
 import pendulum
-#from sqlalchemy.orm import sessionmaker
 
 DWH_conn_id = 'PG_WAREHOUSE_CONNECTION'
 
@@ -68,7 +64,4 @@ with DAG(
         sql="dm_courier_ledger.sql")
 
 
-
-
-
-
+    update_dm_timestamps >> update_dm_users >> update_dm_restaurants >> update_dm_products >> update_dm_couriers >> update_dm_orders >> update_dm_deliveries >> update_dm_courier_ledger >> update_fct_product_sales >> update_dm_settlement_report

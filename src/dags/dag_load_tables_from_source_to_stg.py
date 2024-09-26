@@ -182,6 +182,6 @@ with DAG(
     )
 
 
-
+    load_ranks_table_from_source_to_dwh_task >> load_users_table_from_source_to_dwh_task >> events_load >> load_couriers_table_from_source_to_dwh_task >> load_deliveries_table_from_source_to_dwh_task
 
 
